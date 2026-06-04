@@ -14,7 +14,7 @@ window.addEventListener('pointermove', (e) => {
 })
 
 // render projects from JSON
-fetch('/content/projects.json')
+fetch('content/projects.json')
     .then(r => r.json())
     .then(({ projects }) => {
         const list = document.getElementById('project')
