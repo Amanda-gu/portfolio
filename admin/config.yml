@@ -4,6 +4,8 @@ backend:
   branch: main
   base_url: https://sveltia-cms-auth.guoj826.workers.dev
 
+site_url: https://amanda-gu.github.io/portfolio
+
 media_folder: assets
 public_folder: assets
 
