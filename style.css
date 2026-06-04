@@ -152,9 +152,7 @@ main{
     #project{
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        gap: 0;
-        border-block-start: var(--button-style);
-        border-inline-start: var(--button-style);
+        column-gap: var(--space-bar-1);
 
         /* 6-card repeat: row1=2+5, row2=4+3, row3=6+1 */
         .card:nth-child(6n+1) { grid-column: span 2; }
@@ -170,9 +168,8 @@ main{
             display: flex;
             color: var(--secondary-color);
             border-radius: var(--button-corner);
-            border-inline-end: var(--button-style);
-            border-block-end: var(--button-style);
-            
+            border-block-start: var(--button-style);
+
             transition: background-color 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
 
             .cardinfo{
@@ -372,35 +369,29 @@ h1:hover, #course:hover{
     z-index: 2;    
     touch-action: none;
     pointer-events: none;
-    mix-blend-mode: exclusion;    
+    mix-blend-mode: difference;
     div{
         position: fixed;
         translate: -50% -50%;
     }
     #h-line, #v-line{
-                background-color: light-dark(
-                   var(--light-secondary-color),
-                    var(--dark-secondary-color)
-                );
+        background-color: #ffffff;
     }
-        
+
     #h-line{
                 width: 200vw;
                 height:  calc(var(--space-bar-0)/15);
     }
-        
+
     #v-line{
         width: calc(var(--space-bar-0)/10);
         height: 200vh;
     }
-        
+
     #sq{
-        width: 3rem;
-        height: 3rem;
-        background-color: light-dark(
-            var(--light-primary-color),
-            var(--dark-primary-color)
-            );
+        width: 1rem;
+        height: 1rem;
+        background-color: #ffffff;
     }
 }
 
@@ -453,5 +444,109 @@ h1:hover, #course:hover{
   100% {
     --rotate: 360deg;
   }
+}
+
+#project-modal {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-end: 0;
+    width: clamp(20rem, 60vw, 40rem);
+    background-color: light-dark(var(--light-primary-color), var(--dark-primary-color));
+    color: light-dark(var(--light-bg-color), var(--dark-bg-color));
+    border-inline-start: var(--button-style);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-bar-2);
+    padding: var(--space-page-margin);
+    overflow-y: auto;
+    transform: translateX(110%);
+    transition: transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &.open {
+        transform: translateX(0);
+    }
+
+    #modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #modal-close {
+        all: unset;
+        cursor: none;
+        color: light-dark(var(--light-bg-color), var(--dark-bg-color));
+        filter: blur(0.1rem);
+        transition: filter 400ms ease;
+
+        &:hover {
+            filter: blur(0);
+        }
+    }
+
+    #modal-link {
+        font-family: var(--mono);
+        font-size: var(--caption-copy);
+        color: light-dark(var(--light-bg-color), var(--dark-bg-color));
+        filter: blur(0.1rem);
+        transition: filter 400ms ease;
+
+        &:hover {
+            filter: blur(0);
+        }
+    }
+
+    #modal-title {
+        font-size: var(--heading-copy);
+    }
+
+    #modal-tags {
+        font-family: var(--mono);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-bar-2);
+
+        tag {
+            text-transform: uppercase;
+            font-size: var(--caption-copy);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            color: light-dark(var(--dark-secondary-color), var(--light-secondary-color));
+
+            &::before {
+                content: "";
+                display: block;
+                width: calc(var(--space-bar-0) * 0.8);
+                height: calc(var(--space-bar-0) * 0.8);
+                background-color: currentColor;
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    #modal-image {
+        width: 100%;
+        border-radius: var(--button-corner);
+    }
+
+    @media(width < 700px) {
+        inset-inline: 0;
+        inset-block-start: auto;
+        width: 100%;
+        height: 80vh;
+        border-inline-start: none;
+        border-block-start: var(--button-style);
+        transform: translateY(110%);
+
+        &.open {
+            transform: translateY(0);
+        }
+    }
+}
+
+#bg {
+    z-index: 1000;
 }
 
