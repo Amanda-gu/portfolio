@@ -1,0 +1,74 @@
+{
+  "projects": [
+    {
+      "title": "how do we see the world",
+      "id": "links",
+      "url": "/links",
+      "tags": ["Web Design", "Web Development"],
+      "image": "assets/links.png"
+    },
+    {
+      "title": "Type Darkroom",
+      "id": "binding",
+      "url": "/binding",
+      "tags": ["html", "css"],
+      "image": "assets/binding.png"
+    },
+    {
+      "title": "Mixed Signals",
+      "id": "functions",
+      "url": "/functions",
+      "tags": ["html", "css", "javascript"],
+      "image": "assets/functions.png"
+    },
+    {
+      "title": "Honeywell I'm Home",
+      "id": "spread",
+      "url": "/spread-smart-home",
+      "tags": ["html", "css"],
+      "image": "assets/spread.png"
+    },
+    {
+      "title": "Art Collage",
+      "id": "art-collage",
+      "url": "/art-collage",
+      "tags": ["html", "css", "javascript"],
+      "image": "assets/art.png"
+    },
+    {
+      "title": "Italics Not Italics",
+      "id": "manuscript",
+      "url": "/thinking-about-italics",
+      "tags": ["html", "css"],
+      "image": "assets/manuscript.png"
+    },
+    {
+      "title": "Project Seven",
+      "id": "project-07",
+      "url": "/project-07",
+      "tags": ["placeholder"],
+      "image": "assets/links.png"
+    },
+    {
+      "title": "Project Eight",
+      "id": "project-08",
+      "url": "/project-08",
+      "tags": ["placeholder"],
+      "image": "assets/binding.png"
+    },
+    {
+      "title": "Project Nine",
+      "id": "project-09",
+      "url": "/project-09",
+      "tags": ["placeholder"],
+      "image": "assets/spread.png"
+    },
+    {
+      "title": "Project Ten",
+      "id": "project-10",
+      "url": "/project-10",
+      "tags": ["placeholder"],
+      "image": "assets/art.png"
+    }
+  ]
+}
