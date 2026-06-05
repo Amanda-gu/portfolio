@@ -163,6 +163,8 @@ document.addEventListener('keydown', e => {
 
 // ink bleed — per-character cursor proximity effect
 ;(function () {
+    if (window.innerWidth < 700) return
+
     const MAX_DIST = 50   // px — outer edge, no effect
     const INNER_DIST = 10 // px — full bleed
     const LEVELS = 5
