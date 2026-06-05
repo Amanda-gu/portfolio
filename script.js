@@ -127,8 +127,8 @@ document.addEventListener('keydown', e => {
 
 // ink bleed — per-character cursor proximity effect
 ;(function () {
-    const MAX_DIST = 80   // px — outer edge, no effect
-    const INNER_DIST = 5 // px — full bleed
+    const MAX_DIST = 40   // px — outer edge, no effect
+    const INNER_DIST = 1 // px — full bleed
     const LEVELS = 5
     const FILTERS = ['', 'url(#ink-1)', 'url(#ink-2)', 'url(#ink-3)', 'url(#ink-4)', 'url(#ink-5)']
 
@@ -156,12 +156,10 @@ document.addEventListener('keydown', e => {
     }
 
     // run after DOM is ready (projects load via fetch, main-content is static)
-    document.querySelectorAll('#main-content p').forEach(p => {
-        splitNode(p)
-    })
+    splitNode(document.getElementById('main-content'))
     chars = [...document.querySelectorAll('#main-content .ink-char')]
 
-    const RISE = 0.06  // how fast ink builds up per frame (~1s to full)
+    const RISE = 0.005  // how fast ink builds up per frame (~1s to full)
 
     // each frame: lerp each character's ink value toward its distance-based target,
     // so the effect builds up while the cursor lingers and fades slowly after it leaves
@@ -195,6 +193,14 @@ document.addEventListener('keydown', e => {
     window.addEventListener('pointermove', e => {
         mouseX = e.clientX
         mouseY = e.clientY
+    })
+
+    document.getElementById('ink-clear').addEventListener('click', () => {
+        for (const span of chars) {
+            span._inkVal = 0
+            span._inkLevel = 0
+            span.style.filter = ''
+        }
     })
 
     requestAnimationFrame(tick)
