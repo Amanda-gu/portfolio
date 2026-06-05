@@ -39,7 +39,7 @@
     --card-width: auto;
 
     --body-copy: 1rem;
-    --caption-copy: calc(var(--body-copy) * 0.7);
+    --caption-copy: calc(var(--body-copy) * 0.8);
     --heading-copy: calc(var(--body-copy) * 1.3);
 
     --space-bar-0: 0.4rem;
@@ -99,14 +99,13 @@ header{
     font-size: var(--caption-copy);
     font-family: var(--mono);
     color: light-dark(
-        var(--light-secondary-color),
-        var(--dark-secondary-color)
+        var(--light-primary-color),
+        var(--dark-primary-color)
     );
     z-index: 1;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: var(--space-bar-0);
+    align-items: center;
+    gap: var(--space-bar-2);
 }
 
 #theme-toggle {
