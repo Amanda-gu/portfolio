@@ -58,18 +58,21 @@ function createWindow(project) {
         ${project.image ? `<img class="win-image" src="${project.image}" alt="${project.title}">` : ''}
     `
 
-    // center with small random offset so stacked windows are visible
-    const offset = windows.size * 24
-    win.style.left = `calc(50% - 11rem + ${offset}px)`
-    win.style.top  = `calc(50% - 17.5rem + ${offset}px)`
     win.style.zIndex = ++zTop
+
+    const isMobile = window.innerWidth < 700
+    if (!isMobile) {
+        const offset = windows.size * 24
+        win.style.left = `calc(50% - 11rem + ${offset}px)`
+        win.style.top  = `calc(50% - 17.5rem + ${offset}px)`
+    }
 
     win.querySelector('.win-close').addEventListener('click', () => {
         win.remove()
         windows.delete(project.id)
     })
 
-    makeDraggable(win, win.querySelector('.win-header'))
+    if (!isMobile) makeDraggable(win, win.querySelector('.win-header'))
     win.addEventListener('pointerdown', () => { win.style.zIndex = ++zTop })
 
     document.body.appendChild(win)
@@ -79,6 +82,7 @@ function createWindow(project) {
     requestAnimationFrame(() => win.classList.add('open'))
 }
 
+
 function makeDraggable(win, handle) {
     let dragging = false, lastX, lastY
 
@@ -87,7 +91,6 @@ function makeDraggable(win, handle) {
         dragging = true
         lastX = e.clientX
         lastY = e.clientY
-        // resolve calc() to px once
         const r = win.getBoundingClientRect()
         win.style.left = r.left + 'px'
         win.style.top  = r.top  + 'px'
@@ -149,7 +152,6 @@ fetch('content/projects.json')
                 const project = projectsData.find(p => p.id === card.dataset.id)
                 if (!project) return
                 if (windows.has(project.id)) {
-                    // bring existing window to front
                     windows.get(project.id).style.zIndex = ++zTop
                 } else {
                     createWindow(project)
