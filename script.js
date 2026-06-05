@@ -1,3 +1,39 @@
+;(function () {
+    const link = document.getElementById('email-copy')
+    if (!link) return
+    const tip = document.createElement('div')
+    tip.id = 'email-tooltip'
+    tip.textContent = 'click to copy'
+    document.body.appendChild(tip)
+
+    link.addEventListener('mousemove', (e) => {
+        tip.style.left = (e.clientX + 14) + 'px'
+        tip.style.top  = (e.clientY + 14) + 'px'
+        tip.classList.add('visible')
+    })
+    link.addEventListener('mouseleave', () => {
+        tip.classList.remove('visible')
+    })
+})()
+
+function copyEmail(e) {
+    e.preventDefault()
+    const email = 'itsamandaguo@gmail.com'
+    const link = document.getElementById('email-copy')
+    link.textContent = 'copied!'
+    setTimeout(() => { link.textContent = email }, 1500)
+    try {
+        navigator.clipboard.writeText(email)
+    } catch (_) {
+        const ta = document.createElement('textarea')
+        ta.value = email
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+    }
+}
+
 // theme toggle
 ;(function () {
     const root = document.documentElement
@@ -159,7 +195,7 @@ document.addEventListener('keydown', e => {
     splitNode(document.getElementById('main-content'))
     chars = [...document.querySelectorAll('#main-content .ink-char')]
 
-    const RISE = 0.005  // how fast ink builds up per frame (~1s to full)
+    const RISE = 0.009  // how fast ink builds up per frame (~1s to full)
 
     // each frame: lerp each character's ink value toward its distance-based target,
     // so the effect builds up while the cursor lingers and fades slowly after it leaves

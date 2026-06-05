@@ -48,6 +48,8 @@
     --space-bar-3: 4rem;
     --space-page-margin: 2rem;
 
+    --blur: 0.08rem;
+
     --button-corner: 0.1rem;
     --button-style: solid 0.03rem light-dark(
             var(--light-secondary-color),
@@ -176,7 +178,7 @@ main{
             var(--dark-primary-color)
         );
         transition: color 1200ms cubic-bezier(0.165, 0.84, 0.44, 1);
-        filter: blur(0.1rem);
+        filter: blur(var(--blur));
     }
 
     .text-links:hover{
@@ -556,7 +558,7 @@ h1:hover, #course:hover{
         font-family: var(--mono);
         font-size: var(--caption-copy);
         color: light-dark(var(--light-primary-color), var(--dark-primary-color));
-        filter: blur(0.1rem);
+        filter: blur(var(--blur));
         transition: filter 400ms ease;
         &:hover { filter: blur(0); }
     }
@@ -601,5 +603,21 @@ h1:hover, #course:hover{
 
 #bg {
     z-index: 1000;
+}
+
+#email-tooltip {
+    position: fixed;
+    pointer-events: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: light-dark(var(--light-primary-color), var(--dark-primary-color));
+    opacity: 0;
+    transition: opacity 150ms ease;
+    z-index: 9999;
+    white-space: nowrap;
+}
+
+#email-tooltip.visible {
+    opacity: 1;
 }
 
