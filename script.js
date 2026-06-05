@@ -63,7 +63,7 @@ window.addEventListener('pointermove', (e) => {
     document.getElementById('sq').style.left     = `${e.clientX}px`
     document.getElementById('sq').style.top      = `${e.clientY}px`
 
-    document.querySelectorAll('#project img').forEach((img) => {
+    document.querySelectorAll('#project .img-cursor').forEach((img) => {
         img.style.left = `${e.clientX}px`
         img.style.top  = `${e.clientY}px`
     })
@@ -294,6 +294,14 @@ fetch('content/projects.json')
                 } else {
                     createWindow(project)
                 }
+            })
+        })
+
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'))
+                btn.classList.add('active')
+                document.getElementById('project').dataset.view = btn.dataset.view
             })
         })
     })

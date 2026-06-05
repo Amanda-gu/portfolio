@@ -213,6 +213,12 @@ main{
                 justify-content: space-between;
                 width: 100%;
 
+                .card-text {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0;
+                }
+
                 p, .tags{
                     transition: color 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
                     tag{
@@ -222,7 +228,7 @@ main{
                     }
                 }
 
-                img{
+                .img-cursor{
                     pointer-events: none;
                     border-radius: var(--button-corner);
                     opacity: 0;
@@ -234,13 +240,18 @@ main{
                     z-index: 10;
                 }
 
+                .img-static{
+                    pointer-events: none;
+                    border-radius: var(--button-corner);
+                    opacity: 1;
+                    width: 100%;
+                    margin-block-start: var(--space-bar-1);
+                    transition: opacity 300ms ease-in-out;
+                }
+
                 @media(width<700px){
-                    img{
-                        opacity: 1;
-                        scale: 1;
-                        position: static;
-                        translate: 0%;
-                        width: 100%;
+                    .img-cursor{
+                        display: none;
                     }
                 }
 
@@ -295,9 +306,12 @@ main{
             }
 
             
-            img {
+            .img-cursor {
                 opacity: 1;
                 scale: 1;
+            }
+            .img-static {
+                opacity: 0;
             }
             .arrow {
                 opacity: 1;
