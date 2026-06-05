@@ -19,6 +19,31 @@
 		<script defer src="script.js"></script>
 	</head>
 	<body>
+		<svg id="ink-filters" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+			<defs>
+				<filter id="ink-1" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
+					<feMorphology operator="dilate" radius="0.4" in="SourceGraphic" result="m"/>
+					<feGaussianBlur stdDeviation="0.3" in="m"/>
+				</filter>
+				<filter id="ink-2" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
+					<feMorphology operator="dilate" radius="0.9" in="SourceGraphic" result="m"/>
+					<feGaussianBlur stdDeviation="0.5" in="m"/>
+				</filter>
+				<filter id="ink-3" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
+					<feMorphology operator="dilate" radius="1.6" in="SourceGraphic" result="m"/>
+					<feGaussianBlur stdDeviation="0.7" in="m"/>
+				</filter>
+				<filter id="ink-4" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
+					<feMorphology operator="dilate" radius="2.5" in="SourceGraphic" result="m"/>
+					<feGaussianBlur stdDeviation="1.0" in="m"/>
+				</filter>
+				<filter id="ink-5" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
+					<feMorphology operator="dilate" radius="3.5" in="SourceGraphic" result="m"/>
+					<feGaussianBlur stdDeviation="1.4" in="m"/>
+				</filter>
+			</defs>
+		</svg>
+
 		<div id="bg">
 
 			<div id="h-line"></div>

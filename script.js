@@ -125,6 +125,81 @@ document.addEventListener('keydown', e => {
     }
 })
 
+// ink bleed — per-character cursor proximity effect
+;(function () {
+    const MAX_DIST = 80   // px — outer edge, no effect
+    const INNER_DIST = 5 // px — full bleed
+    const LEVELS = 5
+    const FILTERS = ['', 'url(#ink-1)', 'url(#ink-2)', 'url(#ink-3)', 'url(#ink-4)', 'url(#ink-5)']
+
+    let mouseX = -9999, mouseY = -9999
+    let chars = []
+
+    // split text nodes into .ink-char spans, preserving element structure
+    function splitNode(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            const frag = document.createDocumentFragment()
+            for (const ch of node.textContent) {
+                if (ch === ' ' || ch === '\n' || ch === '\r' || ch === '\t') {
+                    frag.appendChild(document.createTextNode(ch))
+                } else {
+                    const span = document.createElement('span')
+                    span.className = 'ink-char'
+                    span.textContent = ch
+                    frag.appendChild(span)
+                }
+            }
+            node.replaceWith(frag)
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            ;[...node.childNodes].forEach(splitNode)
+        }
+    }
+
+    // run after DOM is ready (projects load via fetch, main-content is static)
+    document.querySelectorAll('#main-content p').forEach(p => {
+        splitNode(p)
+    })
+    chars = [...document.querySelectorAll('#main-content .ink-char')]
+
+    const RISE = 0.06  // how fast ink builds up per frame (~1s to full)
+
+    // each frame: lerp each character's ink value toward its distance-based target,
+    // so the effect builds up while the cursor lingers and fades slowly after it leaves
+    function tick() {
+        for (const span of chars) {
+            const r = span.getBoundingClientRect()
+            const cx = r.left + r.width * 0.5
+            const cy = r.top  + r.height * 0.5
+            const dist = Math.hypot(cx - mouseX, cy - mouseY)
+
+            let target = 0
+            if (dist < MAX_DIST) {
+                const norm = 1 - Math.max(0, (dist - INNER_DIST) / (MAX_DIST - INNER_DIST))
+                target = norm * norm * LEVELS
+            }
+
+            const val = span._inkVal || 0
+            const next = target > val ? val + (target - val) * RISE : val
+            span._inkVal = next
+
+            const level = Math.min(LEVELS, Math.ceil(next))
+            if (span._inkLevel !== level) {
+                span.style.filter = FILTERS[level]
+                span._inkLevel = level
+            }
+        }
+
+        requestAnimationFrame(tick)
+    }
+
+    window.addEventListener('pointermove', e => {
+        mouseX = e.clientX
+        mouseY = e.clientY
+    })
+
+    requestAnimationFrame(tick)
+})()
+
 // render projects from JSON
 fetch('content/projects.json')
     .then(r => r.json())

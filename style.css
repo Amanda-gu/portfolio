@@ -157,6 +157,11 @@ main{
             font-family: var(--mono);
             font-size: smaller;
         }
+
+        .ink-char {
+            display: inline;
+            will-change: filter;
+        }
     }
 
     #buttons{
@@ -287,6 +292,7 @@ main{
                 );
                 filter: blur(0);
             }
+
             
             img {
                 opacity: 1;
