@@ -90,13 +90,16 @@ function createWindow(project) {
     win.className = 'project-window'
     win.innerHTML = `
         <div class="win-header">
-            <button class="win-close">
-                <svg viewBox="0 0 429 429" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2.5" y="2.5" width="423.294" height="423.294" stroke="currentColor" stroke-width="5"/>
-                    <line x1="329.404" y1="102.427" x2="102.428" y2="329.403" stroke="currentColor" stroke-width="5"/>
-                    <line y1="-2.5" x2="320.992" y2="-2.5" transform="matrix(0.707107 0.707107 0.707107 -0.707107 100.659 100.659)" stroke="currentColor" stroke-width="5"/>
-                </svg>
-            </button>
+            <div class="win-controls">
+                <button class="win-close">
+                    <svg viewBox="0 0 429 429" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2.5" y="2.5" width="423.294" height="423.294" stroke="currentColor" stroke-width="5"/>
+                        <line x1="329.404" y1="102.427" x2="102.428" y2="329.403" stroke="currentColor" stroke-width="5"/>
+                        <line y1="-2.5" x2="320.992" y2="-2.5" transform="matrix(0.707107 0.707107 0.707107 -0.707107 100.659 100.659)" stroke="currentColor" stroke-width="5"/>
+                    </svg>
+                </button>
+                <button class="win-fullscreen"></button>
+            </div>
             <a class="win-link text-links" href="${project.url}">visit ↗</a>
         </div>
         <p class="win-title">${project.title}</p>
@@ -116,6 +119,10 @@ function createWindow(project) {
     win.querySelector('.win-close').addEventListener('click', () => {
         win.remove()
         windows.delete(project.id)
+    })
+
+    win.querySelector('.win-fullscreen').addEventListener('click', () => {
+        win.classList.toggle('fullscreen')
     })
 
     if (!isMobile) makeDraggable(win, win.querySelector('.win-header'))
@@ -207,7 +214,7 @@ document.addEventListener('keydown', e => {
     splitNode(document.getElementById('main-content'))
     chars = [...document.querySelectorAll('#main-content .ink-char')]
 
-    const RISE = 0.009  // how fast ink builds up per frame (~1s to full)
+    const RISE = 0.01  // how fast ink builds up per frame (~1s to full)
 
     let inkEnabled = true
 

@@ -39,8 +39,8 @@
     --card-width: auto;
 
     --body-copy: 1rem;
-    --caption-copy: calc(var(--body-copy) * 0.8);
-    --heading-copy: calc(var(--body-copy) * 1.3);
+    --caption-copy: calc(var(--body-copy) * 0.7);
+    --heading-copy: calc(var(--body-copy) * 1.2);
 
     --space-bar-0: 0.4rem;
     --space-bar-1: 0.6rem;
@@ -241,7 +241,7 @@ main{
                 .card-text {
                     display: flex;
                     flex-direction: column;
-                    gap: 0;
+                    gap: var(--space-bar-0);
                 }
 
                 p, .tags{
@@ -270,7 +270,7 @@ main{
                     border-radius: var(--button-corner);
                     opacity: 1;
                     width: 100%;
-                    margin-block-start: var(--space-bar-1);
+                    margin-block-start: var(--space-bar-2);
                     transition: opacity 300ms ease-in-out;
                 }
 
@@ -295,7 +295,6 @@ main{
                     display: flex;
                     flex-wrap: wrap;
                     gap: var(--space-bar-2);
-                    margin-block-start: var(--space-bar-1);
 
                     tag{
                         text-transform: uppercase;
@@ -614,6 +613,17 @@ h1:hover, #course:hover{
         opacity: 1;
     }
 
+    &.fullscreen {
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        resize: none;
+
+        .win-fullscreen::after {
+            mask-image: url('assets/shrink.svg');
+        }
+    }
+
     .win-header {
         position: sticky;
         inset-block-start: 0;
@@ -629,15 +639,36 @@ h1:hover, #course:hover{
         background-color: light-dark(var(--light-bg-color), var(--dark-bg-color));
     }
 
-    .win-close {
+    .win-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--space-bar-1);
+    }
+
+    .win-close,
+    .win-fullscreen {
         all: unset;
         cursor: none;
         color: light-dark(var(--light-primary-color), var(--dark-primary-color));
         display: inline-flex;
 
         svg { width: 1rem; height: 1rem; display: block; }
-        rect, line { stroke-width: var(--space-bar-2); }
+        rect, line, polyline { stroke-width: var(--space-bar-2); }
+    }
 
+    .win-fullscreen {
+        &::after {
+            content: '';
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            mask: url('assets/expand.svg') center / contain no-repeat;
+            background-color: currentColor;
+            transition: rotate 300ms ease;
+        }
+    }
+
+    .win-close {
         rect {
             fill: currentColor;
             transition: fill 300ms ease;
@@ -664,7 +695,6 @@ h1:hover, #course:hover{
     }
 
     .win-title {
-        font-size: var(--heading-copy);
         flex-shrink: 0;
     }
 
@@ -682,7 +712,6 @@ h1:hover, #course:hover{
             display: inline-flex;
             align-items: center;
             gap: 0.3em;
-            color: light-dark(var(--light-secondary-color), var(--dark-secondary-color));
 
             &::before {
                 content: "";
@@ -713,7 +742,6 @@ h1:hover, #course:hover{
         }
 
         .win-caption {
-            font-family: var(--mono);
             font-size: var(--caption-copy);
             color: light-dark(var(--light-secondary-color), var(--dark-secondary-color));
             line-height: 1.5;
