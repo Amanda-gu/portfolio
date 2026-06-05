@@ -75,6 +75,16 @@ let projectsData = []
 const windows = new Map() // projectId → windowEl
 let zTop = 100
 
+function galleryHTML(gallery) {
+    if (!gallery || !gallery.length) return ''
+    return gallery.map(item => `
+        <div class="win-gallery-item layout-${item.layout}">
+            <img src="${item.src}" alt="${item.caption}">
+            <p class="win-caption">${item.caption}</p>
+        </div>
+    `).join('')
+}
+
 function createWindow(project) {
     const win = document.createElement('div')
     win.className = 'project-window'
@@ -91,7 +101,7 @@ function createWindow(project) {
         </div>
         <p class="win-title">${project.title}</p>
         <div class="win-tags">${project.tags.map(t => `<tag>${t}</tag>`).join('')}</div>
-        ${project.image ? `<img class="win-image" src="${project.image}" alt="${project.title}">` : ''}
+        <div class="win-gallery">${galleryHTML(project.gallery)}</div>
     `
 
     win.style.zIndex = ++zTop
