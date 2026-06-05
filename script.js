@@ -272,14 +272,16 @@ fetch('content/projects.json')
         list.innerHTML = projects.map(p => `
             <li class="card" id="${p.id}" data-id="${p.id}">
                 <div class="cardinfo second-cta">
-                    <section class="cardtitle text-links">
-                        <p>${p.title}</p>
-                        <p class="arrow">↗</p>
-                    </section>
-                    <section class="tags">
-                        ${p.tags.map(t => `<tag>${t}</tag>`).join('')}
-                    </section>
-                    ${p.image ? `<img src="${p.image}" alt="${p.title}">` : ''}
+                    <div class="card-text">
+                        <section class="cardtitle text-links">
+                            <p>${p.title}</p>
+                            <p class="arrow">↗</p>
+                        </section>
+                        <section class="tags">
+                            ${p.tags.map(t => `<tag>${t}</tag>`).join('')}
+                        </section>
+                    </div>
+                    ${p.image ? `<img class="img-cursor" src="${p.image}" alt="${p.title}"><img class="img-static" src="${p.image}" alt="${p.title}">` : ''}
                 </div>
             </li>
         `).join('')
