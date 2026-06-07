@@ -496,6 +496,8 @@ h1:hover, #course:hover{
     mix-blend-mode: difference;
     div{
         position: fixed;
+        left: 0;
+        top: 0;
         translate: -50% -50%;
     }
     #h-line, #v-line{
