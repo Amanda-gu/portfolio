@@ -531,7 +531,7 @@ h1:hover, #course:hover{
 }
 
 @media(width<700px){
-    #ink-clear { display: none; }
+    #bg { display: none; }
 
     header {
         position: static;

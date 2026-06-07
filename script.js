@@ -180,7 +180,6 @@ document.addEventListener('keydown', e => {
 
 // ink bleed — per-character cursor proximity effect
 ;(function () {
-    if (window.innerWidth < 700) return
 
     const MAX_DIST = 50   // px — outer edge, no effect
     const INNER_DIST = 10 // px — full bleed
@@ -259,6 +258,11 @@ document.addEventListener('keydown', e => {
         mouseX = e.clientX
         mouseY = e.clientY
     })
+
+    window.addEventListener('touchmove', e => {
+        mouseX = e.touches[0].clientX
+        mouseY = e.touches[0].clientY
+    }, { passive: true })
 
     const inkBtn = document.getElementById('ink-clear')
     inkBtn.addEventListener('click', () => {
