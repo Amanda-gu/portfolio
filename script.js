@@ -55,19 +55,31 @@ function copyEmail(e) {
 })()
 
 // custom cursor
-window.addEventListener('pointermove', (e) => {
-    document.getElementById('h-line').style.left = `${e.clientX}px`
-    document.getElementById('h-line').style.top  = `${e.clientY}px`
-    document.getElementById('v-line').style.left = `${e.clientX}px`
-    document.getElementById('v-line').style.top  = `${e.clientY}px`
-    document.getElementById('sq').style.left     = `${e.clientX}px`
-    document.getElementById('sq').style.top      = `${e.clientY}px`
+const _hLine = document.getElementById('h-line')
+const _vLine = document.getElementById('v-line')
+const _sq    = document.getElementById('sq')
+let _cx = 0, _cy = 0, _rafPending = false
 
-    document.querySelectorAll('#project .img-cursor').forEach((img) => {
-        img.style.left = `${e.clientX}px`
-        img.style.top  = `${e.clientY}px`
+function _applyCursor() {
+    const t = `translate(${_cx}px, ${_cy}px)`
+    _hLine.style.transform = t
+    _vLine.style.transform = t
+    _sq.style.transform    = t
+    document.querySelectorAll('#project .img-cursor').forEach(img => {
+        img.style.left = `${_cx}px`
+        img.style.top  = `${_cy}px`
     })
-})
+    _rafPending = false
+}
+
+window.addEventListener('pointermove', (e) => {
+    _cx = e.clientX
+    _cy = e.clientY
+    if (!_rafPending) {
+        _rafPending = true
+        requestAnimationFrame(_applyCursor)
+    }
+}, { passive: true })
 
 let projectsData = []
 
