@@ -532,6 +532,7 @@ h1:hover, #course:hover{
 
 @media(width<700px){
     #bg { display: none; }
+    body, button, a { cursor: auto; }
 
     header {
         position: static;
