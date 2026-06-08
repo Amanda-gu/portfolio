@@ -701,28 +701,34 @@ h1:hover, #course:hover{
         flex-shrink: 0;
     }
 
-    .win-tags {
-        font-family: var(--mono);
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-bar-2);
+    .win-info {
         flex-shrink: 0;
         margin-block-end: var(--space-bar-1);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-bar-0);
 
-        tag {
-            text-transform: uppercase;
-            font-size: var(--caption-copy);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3em;
+        .tags {
+            font-family: var(--mono);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-bar-2);
 
-            &::before {
-                content: "";
-                display: block;
-                width: calc(var(--space-bar-0) * 0.8);
-                height: calc(var(--space-bar-0) * 0.8);
-                background-color: currentColor;
-                flex-shrink: 0;
+            tag {
+                text-transform: uppercase;
+                font-size: var(--caption-copy);
+                display: inline-flex;
+                align-items: center;
+                gap: 0.3em;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    width: calc(var(--space-bar-0) * 0.8);
+                    height: calc(var(--space-bar-0) * 0.8);
+                    background-color: currentColor;
+                    flex-shrink: 0;
+                }
             }
         }
     }
@@ -751,21 +757,15 @@ h1:hover, #course:hover{
         }
     }
 
-    /* layout: full — image full width, caption below centered */
+    /* layout: full — image full width, caption below left */
     .win-gallery-item.layout-full {
         grid-template-rows: auto auto;
-
-        .win-caption {
-            text-align: center;
-            max-width: 36ch;
-            margin-inline: auto;
-        }
     }
 
     /* layout: beside-right — caption left, image right */
     .win-gallery-item.layout-beside-right {
         grid-template-columns: 1fr 1.4fr;
-        align-items: center;
+        align-items: start;
 
         .win-caption { order: 0; }
         img { order: 1; }
@@ -774,7 +774,7 @@ h1:hover, #course:hover{
     /* layout: beside-left — image left, caption right */
     .win-gallery-item.layout-beside-left {
         grid-template-columns: 1.4fr 1fr;
-        align-items: center;
+        align-items: start;
 
         img { order: 0; }
         .win-caption { order: 1; }
