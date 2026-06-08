@@ -1,0 +1,14 @@
+{
+  "title": "Project Ten",
+  "id": "project-10",
+  "url": "/project-10",
+  "tags": ["placeholder"],
+  "image": "assets/art.png",
+  "gallery": [
+    { "src": "assets/art.png", "caption": "Caption placeholder — describe the opening view.", "layout": "offset" },
+    { "src": "assets/art.png", "caption": "Caption placeholder — detail or process shot.", "layout": "full" },
+    { "src": "assets/art.png", "caption": "Caption placeholder — interaction or state.", "layout": "beside-right" },
+    { "src": "assets/art.png", "caption": "Caption placeholder — material or texture.", "layout": "overlay" },
+    { "src": "assets/art.png", "caption": "Caption placeholder — final or closing view.", "layout": "beside-left" }
+  ]
+}

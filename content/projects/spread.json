@@ -1,0 +1,14 @@
+{
+  "title": "Honeywell I'm Home",
+  "id": "spread",
+  "url": "/spread-smart-home",
+  "tags": ["html", "css"],
+  "image": "assets/spread.png",
+  "gallery": [
+    { "src": "assets/spread.png", "caption": "Homepage — a thermostat dial rendered in CSS, interactive on hover.", "layout": "full" },
+    { "src": "assets/spread.png", "caption": "Room view: each device listed as a typographic element, not an icon.", "layout": "offset" },
+    { "src": "assets/spread.png", "caption": "Schedule interface using a 24-column grid mapped to hours of the day.", "layout": "beside-right" },
+    { "src": "assets/spread.png", "caption": "Night mode — the entire palette shifts via a single CSS variable swap.", "layout": "beside-left" },
+    { "src": "assets/spread.png", "caption": "Print spread companion: the same interface translated to physical form.", "layout": "overlay" }
+  ]
+}

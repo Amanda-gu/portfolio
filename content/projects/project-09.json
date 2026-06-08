@@ -1,0 +1,14 @@
+{
+  "title": "Project Nine",
+  "id": "project-09",
+  "url": "/project-09",
+  "tags": ["placeholder"],
+  "image": "assets/spread.png",
+  "gallery": [
+    { "src": "assets/spread.png", "caption": "Caption placeholder — describe the opening view.", "layout": "overlay" },
+    { "src": "assets/spread.png", "caption": "Caption placeholder — detail or process shot.", "layout": "beside-right" },
+    { "src": "assets/spread.png", "caption": "Caption placeholder — interaction or state.", "layout": "full" },
+    { "src": "assets/spread.png", "caption": "Caption placeholder — material or texture.", "layout": "beside-left" },
+    { "src": "assets/spread.png", "caption": "Caption placeholder — final or closing view.", "layout": "offset" }
+  ]
+}

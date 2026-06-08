@@ -13,37 +13,45 @@ collections:
   - name: projects
     label: Projects
     label_singular: Project
+    folder: content/projects
+    create: true
+    slug: "{{id}}"
+    identifier_field: title
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: id, label: ID (slug), widget: string }
+      - { name: url, label: URL path, widget: string, required: false }
+      - name: tags
+        label: Tags
+        widget: list
+        field: { name: tag, label: Tag, widget: string }
+      - name: image
+        label: Thumbnail Image
+        widget: image
+        required: false
+      - name: gallery
+        label: Gallery (max 10)
+        label_singular: Image
+        widget: list
+        max: 10
+        required: false
+        fields:
+          - { name: src, label: Image, widget: image }
+          - { name: caption, label: Caption, widget: string, required: false }
+          - name: layout
+            label: Layout
+            widget: select
+            options: [full, beside-right, beside-left, offset, overlay]
+            default: full
+
+  - name: settings
+    label: Settings
     files:
-      - name: projects
-        label: Projects List
+      - name: project_order
+        label: Project Order
         file: content/projects.json
         fields:
-          - name: projects
-            label: Projects
+          - name: order
+            label: Project Order
             widget: list
-            fields:
-              - { name: title, label: Title, widget: string }
-              - { name: id, label: ID (slug), widget: string }
-              - { name: url, label: URL path, widget: string, required: false }
-              - name: tags
-                label: Tags
-                widget: list
-                field: { name: tag, label: Tag, widget: string }
-              - name: image
-                label: Image
-                widget: image
-                required: false
-              - name: gallery
-                label: Gallery (max 10)
-                label_singular: Image
-                widget: list
-                max: 10
-                required: false
-                fields:
-                  - { name: src, label: Image, widget: image }
-                  - { name: caption, label: Caption, widget: string, required: false }
-                  - name: layout
-                    label: Layout
-                    widget: select
-                    options: [full, beside-right, beside-left, offset, overlay]
-                    default: full
+            field: { name: id, label: Project ID (slug), widget: string }

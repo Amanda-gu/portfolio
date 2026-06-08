@@ -291,7 +291,10 @@ document.addEventListener('keydown', e => {
 // render projects from JSON
 fetch('content/projects.json')
     .then(r => r.json())
-    .then(({ projects }) => {
+    .then(({ order }) => Promise.all(
+        order.map(id => fetch(`content/projects/${id}.json`).then(r => r.json()))
+    ))
+    .then(projects => {
         projectsData = projects
         const list = document.getElementById('project')
         list.innerHTML = projects.map(p => `

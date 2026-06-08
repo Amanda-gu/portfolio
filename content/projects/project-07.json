@@ -1,0 +1,14 @@
+{
+  "title": "Project Seven",
+  "id": "project-07",
+  "url": "/project-07",
+  "tags": ["placeholder"],
+  "image": "assets/links.png",
+  "gallery": [
+    { "src": "assets/links.png", "caption": "Caption placeholder — describe the opening view.", "layout": "full" },
+    { "src": "assets/links.png", "caption": "Caption placeholder — detail or process shot.", "layout": "beside-right" },
+    { "src": "assets/links.png", "caption": "Caption placeholder — interaction or state.", "layout": "beside-left" },
+    { "src": "assets/links.png", "caption": "Caption placeholder — material or texture.", "layout": "offset" },
+    { "src": "assets/links.png", "caption": "Caption placeholder — final or closing view.", "layout": "overlay" }
+  ]
+}

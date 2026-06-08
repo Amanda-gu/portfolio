@@ -1,0 +1,14 @@
+{
+  "title": "Mixed Signals",
+  "id": "functions",
+  "url": "/functions",
+  "tags": ["html", "css", "javascript"],
+  "image": "assets/functions.png",
+  "gallery": [
+    { "src": "assets/functions.png", "caption": "Signal interference visualized as overlapping sine waves in SVG.", "layout": "overlay" },
+    { "src": "assets/functions.png", "caption": "Each track is a function — amplitude and frequency editable in realtime.", "layout": "beside-left" },
+    { "src": "assets/functions.png", "caption": "Waveform canvas rendered frame-by-frame with requestAnimationFrame.", "layout": "full" },
+    { "src": "assets/functions.png", "caption": "Mixing board UI — sliders built in pure CSS with custom properties.", "layout": "beside-right" },
+    { "src": "assets/functions.png", "caption": "Output state: all signals zeroed, leaving a flat line across the screen.", "layout": "offset" }
+  ]
+}

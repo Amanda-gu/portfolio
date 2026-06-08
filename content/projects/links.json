@@ -1,0 +1,14 @@
+{
+  "title": "how do we see the world",
+  "id": "links",
+  "url": "/links",
+  "tags": ["Web Design", "Web Development"],
+  "image": "assets/links.png",
+  "gallery": [
+    { "src": "assets/links.png", "caption": "Opening screen — a question posed to the viewer before anything loads.", "layout": "full" },
+    { "src": "assets/links.png", "caption": "Navigation built entirely from hyperlinks, each pointing somewhere unexpected.", "layout": "beside-right" },
+    { "src": "assets/links.png", "caption": "Typography responds to scroll position, collapsing as the reader moves through.", "layout": "beside-left" },
+    { "src": "assets/links.png", "caption": "Color palette shifts between sections, anchored by a fixed monochrome grid.", "layout": "offset" },
+    { "src": "assets/links.png", "caption": "Final spread — the links loop back to the beginning.", "layout": "overlay" }
+  ]
+}

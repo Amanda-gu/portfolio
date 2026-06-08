@@ -1,0 +1,14 @@
+{
+  "title": "Project Eight",
+  "id": "project-08",
+  "url": "/project-08",
+  "tags": ["placeholder"],
+  "image": "assets/binding.png",
+  "gallery": [
+    { "src": "assets/binding.png", "caption": "Caption placeholder — describe the opening view.", "layout": "beside-left" },
+    { "src": "assets/binding.png", "caption": "Caption placeholder — detail or process shot.", "layout": "full" },
+    { "src": "assets/binding.png", "caption": "Caption placeholder — interaction or state.", "layout": "overlay" },
+    { "src": "assets/binding.png", "caption": "Caption placeholder — material or texture.", "layout": "offset" },
+    { "src": "assets/binding.png", "caption": "Caption placeholder — final or closing view.", "layout": "beside-right" }
+  ]
+}
