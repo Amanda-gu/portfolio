@@ -17,8 +17,6 @@ collections:
     create: true
     extension: json
     format: json
-    slug: "{{id}}"
-    identifier_field: title
     fields:
       - { name: title, label: Title, widget: string }
       - { name: id, label: ID (slug), widget: string }
