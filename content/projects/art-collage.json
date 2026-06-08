@@ -1,14 +1,32 @@
 {
-  "title": "Art Collage",
-  "id": "art-collage",
-  "url": "/art-collage",
-  "tags": ["html", "css", "javascript"],
-  "image": "assets/art.png",
+  "title": "Artiver AI Art Awards",
+  "id": "artiver-ai-art-awards",
+  "url": "",
+  "tags": [
+    "Event Graphics",
+    "Identity"
+  ],
+  "image": "assets/img_3641-2.png",
   "gallery": [
-    { "src": "assets/art.png", "caption": "Source material: scanned fragments arranged before digitization.", "layout": "beside-left" },
-    { "src": "assets/art.png", "caption": "Drag-and-drop canvas — elements snap to a hidden 12-column grid.", "layout": "full" },
-    { "src": "assets/art.png", "caption": "Layer panel: z-index visualized as a physical stack of paper.", "layout": "beside-right" },
-    { "src": "assets/art.png", "caption": "Export view — the collage flattens into a single composited image.", "layout": "overlay" },
-    { "src": "assets/art.png", "caption": "Detail: torn-edge masks drawn in SVG clipPath per element.", "layout": "offset" }
+    {
+      "src": "assets/img_3644-1.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/img_3642-1.png",
+      "caption": "",
+      "layout": "beside-right"
+    },
+    {
+      "src": "assets/schedule.png",
+      "caption": "",
+      "layout": "beside-right"
+    },
+    {
+      "src": "assets/img_2172-1.png",
+      "caption": "",
+      "layout": "full"
+    }
   ]
 }
