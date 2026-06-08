@@ -89,10 +89,10 @@ let zTop = 100
 
 function galleryHTML(gallery) {
     if (!gallery || !gallery.length) return ''
-    return gallery.map(item => `
-        <div class="win-gallery-item layout-${item.layout}">
-            <img src="${item.src}" alt="${item.caption}">
-            <p class="win-caption">${item.caption}</p>
+    return gallery.slice(0, 10).map(item => `
+        <div class="win-gallery-item layout-${item.layout || 'full'}">
+            <img src="${item.src}" alt="${item.caption || ''}">
+            ${item.caption ? `<p class="win-caption">${item.caption}</p>` : ''}
         </div>
     `).join('')
 }
@@ -114,8 +114,10 @@ function createWindow(project) {
             </div>
             <a class="win-link text-links" href="${project.url}">visit ↗</a>
         </div>
-        <p class="win-title">${project.title}</p>
-        <div class="win-tags">${project.tags.map(t => `<tag>${t}</tag>`).join('')}</div>
+        <div class="win-info">
+            <p class="win-title">${project.title}</p>
+            <section class="tags">${project.tags.map(t => `<tag>${t}</tag>`).join('')}</section>
+        </div>
         <div class="win-gallery">${galleryHTML(project.gallery)}</div>
     `
 
