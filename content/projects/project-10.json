@@ -1,0 +1,41 @@
+{
+  "title": "UCLA Extension",
+  "id": "ucla-extention",
+  "url": "",
+  "tags": [
+    "campaign",
+    "web design"
+  ],
+  "image": "assets/ucla-extension-billboard.jpg",
+  "gallery": [
+    {
+      "src": "assets/uclax-design-system-campaign.png",
+      "caption": "Caption placeholder — describe the opening view.",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension-social-instagram.gif",
+      "caption": "Caption placeholder — detail or process shot.",
+      "layout": "full"
+    },
+    {
+      "layout": "full",
+      "src": "assets/ucla-extension-social-instagram.jpg"
+    },
+    {
+      "src": "assets/ucla_x_logo_motion-studies_3.gif",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/uclax-design-system-4.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/uclax-design-system-6.png",
+      "caption": "",
+      "layout": "full"
+    }
+  ]
+}
