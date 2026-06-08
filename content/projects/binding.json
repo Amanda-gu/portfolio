@@ -1,14 +1,36 @@
 {
-  "title": "Type Darkroom",
-  "id": "binding",
-  "url": "/binding",
-  "tags": ["html", "css"],
-  "image": "assets/binding.png",
+  "title": "UCLA Arts Welcome Brochure",
+  "id": "ucla-arts-welcome-brochure",
+  "url": "",
+  "tags": [
+    "Editorial"
+  ],
+  "image": "assets/slide-4_3-4.png",
   "gallery": [
-    { "src": "assets/binding.png", "caption": "Cover — letterpress texture simulated through layered CSS filters.", "layout": "beside-right" },
-    { "src": "assets/binding.png", "caption": "Exposed type specimens treated like photographic negatives.", "layout": "full" },
-    { "src": "assets/binding.png", "caption": "Red safelight mode toggled by clicking anywhere on the spread.", "layout": "overlay" },
-    { "src": "assets/binding.png", "caption": "Detail of grain — noise applied per-character at varying densities.", "layout": "offset" },
-    { "src": "assets/binding.png", "caption": "Back matter: a darkroom timer counts down in the margin.", "layout": "beside-left" }
+    {
+      "src": "assets/slide-4_3-9.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/slide-4_3-7.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/slide-4_3-6.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/slide-4_3-5.png",
+      "caption": "",
+      "layout": "offset"
+    },
+    {
+      "src": "assets/slide-4_3-3.png",
+      "caption": "",
+      "layout": "full"
+    }
   ]
 }
