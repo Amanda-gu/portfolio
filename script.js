@@ -112,7 +112,7 @@ function createWindow(project) {
                 </button>
                 <button class="win-fullscreen"></button>
             </div>
-            <a class="win-link text-links" href="${project.url}">visit ↗</a>
+            ${project.url ? `<a class="win-link text-links" href="${project.url}">visit ↗</a>` : ''}
         </div>
         <div class="win-info">
             <p class="win-title">${project.title}</p>
