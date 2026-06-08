@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Macaulay';
-  src: url('/assets/Macaulays.otf') format('opentype');
+  src: url('assets/Macaulays.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* Improves performance */
