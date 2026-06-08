@@ -1,14 +1,37 @@
 {
-  "title": "Project Ten",
-  "id": "project-10",
-  "url": "/project-10",
-  "tags": ["placeholder"],
-  "image": "assets/art.png",
+  "title": "UCLA Extension",
+  "id": "ucla-extention",
+  "url": "",
+  "tags": [
+    "campaign",
+    "web design"
+  ],
+  "image": "assets/ucla-extension-billboard.jpg",
   "gallery": [
-    { "src": "assets/art.png", "caption": "Caption placeholder — describe the opening view.", "layout": "offset" },
-    { "src": "assets/art.png", "caption": "Caption placeholder — detail or process shot.", "layout": "full" },
-    { "src": "assets/art.png", "caption": "Caption placeholder — interaction or state.", "layout": "beside-right" },
-    { "src": "assets/art.png", "caption": "Caption placeholder — material or texture.", "layout": "overlay" },
-    { "src": "assets/art.png", "caption": "Caption placeholder — final or closing view.", "layout": "beside-left" }
+    {
+      "src": "assets/uclax-design-system-campaign.png",
+      "caption": "Caption placeholder — describe the opening view.",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension-social-instagram.gif",
+      "caption": "Caption placeholder — detail or process shot.",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla_x_logo_motion-studies_3.gif",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/uclax-design-system-4.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/uclax-design-system-6.png",
+      "caption": "",
+      "layout": "full"
+    }
   ]
 }
