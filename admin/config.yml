@@ -33,3 +33,17 @@ collections:
                 label: Image
                 widget: image
                 required: false
+              - name: gallery
+                label: Gallery (max 10)
+                label_singular: Image
+                widget: list
+                max: 10
+                required: false
+                fields:
+                  - { name: src, label: Image, widget: image }
+                  - { name: caption, label: Caption, widget: string, required: false }
+                  - name: layout
+                    label: Layout
+                    widget: select
+                    options: [full, beside-right, beside-left, offset, overlay]
+                    default: full
