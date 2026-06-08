@@ -15,6 +15,8 @@ collections:
     label_singular: Project
     folder: content/projects
     create: true
+    extension: json
+    format: json
     slug: "{{id}}"
     identifier_field: title
     fields:
