@@ -202,6 +202,7 @@ document.addEventListener('keydown', e => {
 
     let mouseX = -9999, mouseY = -9999
     let chars = []
+    let rafId = null
 
     // split text nodes into .ink-char spans, preserving element structure
     function splitNode(node) {
@@ -227,6 +228,24 @@ document.addEventListener('keydown', e => {
     splitNode(document.getElementById('main-content'))
     chars = [...document.querySelectorAll('#main-content .ink-char')]
 
+    // Store positions as document coords so scroll is handled cheaply in tick.
+    // Re-cache after fonts.ready because Macaulay shifts metrics vs the fallback.
+    function cacheRects() {
+        const sx = window.scrollX, sy = window.scrollY
+        for (const span of chars) {
+            const r = span.getBoundingClientRect()
+            span._docX = r.left + sx + r.width  * 0.5
+            span._docY = r.top  + sy + r.height * 0.5
+        }
+    }
+    cacheRects()
+    document.fonts.ready.then(cacheRects)
+    let _resizeTimer
+    window.addEventListener('resize', () => {
+        clearTimeout(_resizeTimer)
+        _resizeTimer = setTimeout(cacheRects, 100)
+    }, { passive: true })
+
     const RISE = 0.01  // how fast ink builds up per frame (~1s to full)
 
     let inkEnabled = true
@@ -240,12 +259,12 @@ document.addEventListener('keydown', e => {
     }
 
     function tick() {
-        for (const span of chars) {
-            if (!inkEnabled) continue
+        let anyRising = false
 
-            const r = span.getBoundingClientRect()
-            const cx = r.left + r.width * 0.5
-            const cy = r.top  + r.height * 0.5
+        const sx = window.scrollX, sy = window.scrollY
+        for (const span of chars) {
+            const cx = span._docX - sx
+            const cy = span._docY - sy
             const dist = Math.hypot(cx - mouseX, cy - mouseY)
 
             let target = 0
@@ -263,19 +282,27 @@ document.addEventListener('keydown', e => {
                 span.style.filter = FILTERS[level]
                 span._inkLevel = level
             }
+
+            if (target > val + 0.001) anyRising = true
         }
 
-        requestAnimationFrame(tick)
+        rafId = anyRising ? requestAnimationFrame(tick) : null
+    }
+
+    function scheduleTick() {
+        if (!rafId) rafId = requestAnimationFrame(tick)
     }
 
     window.addEventListener('pointermove', e => {
         mouseX = e.clientX
         mouseY = e.clientY
+        if (inkEnabled) scheduleTick()
     })
 
     window.addEventListener('touchmove', e => {
         mouseX = e.touches[0].clientX
         mouseY = e.touches[0].clientY
+        if (inkEnabled) scheduleTick()
     }, { passive: true })
 
     const inkBtn = document.getElementById('ink-clear')
@@ -284,8 +311,6 @@ document.addEventListener('keydown', e => {
         inkBtn.textContent = inkEnabled ? 'disable ink' : 'enable ink'
         if (!inkEnabled) clearInk()
     })
-
-    requestAnimationFrame(tick)
 })()
 
 // render projects from JSON
