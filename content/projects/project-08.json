@@ -1,14 +1,49 @@
 {
-  "title": "Project Eight",
-  "id": "project-08",
-  "url": "/project-08",
-  "tags": ["placeholder"],
-  "image": "assets/binding.png",
+  "title": "Kemper Contemporary Museum of Arts",
+  "id": "kmca",
+  "url": "",
+  "tags": [
+    "Identity",
+    "Motion Design"
+  ],
+  "image": "assets/kemper-museu-logo-animation-rebrand.gif",
   "gallery": [
-    { "src": "assets/binding.png", "caption": "Caption placeholder — describe the opening view.", "layout": "beside-left" },
-    { "src": "assets/binding.png", "caption": "Caption placeholder — detail or process shot.", "layout": "full" },
-    { "src": "assets/binding.png", "caption": "Caption placeholder — interaction or state.", "layout": "overlay" },
-    { "src": "assets/binding.png", "caption": "Caption placeholder — material or texture.", "layout": "offset" },
-    { "src": "assets/binding.png", "caption": "Caption placeholder — final or closing view.", "layout": "beside-right" }
+    {
+      "src": "assets/kemper-1.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/kemper-6.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/kemper-8.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/kemper-3.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/kemper-9.png",
+      "caption": "Caption placeholder — final or closing view.",
+      "layout": "full"
+    },
+    {
+      "layout": "full",
+      "src": "assets/kemper.png"
+    },
+    {
+      "layout": "full",
+      "src": "assets/kemper-2.png"
+    },
+    {
+      "layout": "full",
+      "src": "assets/kemper.png"
+    }
   ]
 }
