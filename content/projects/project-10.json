@@ -10,12 +10,12 @@
   "gallery": [
     {
       "src": "assets/uclax-design-system-campaign.png",
-      "caption": "Caption placeholder — describe the opening view.",
+      "caption": "",
       "layout": "full"
     },
     {
       "src": "assets/ucla-extension-social-instagram.gif",
-      "caption": "Caption placeholder — detail or process shot.",
+      "caption": "",
       "layout": "full"
     },
     {
