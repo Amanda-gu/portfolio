@@ -2,7 +2,10 @@
   "title": "Parallel Contrast",
   "id": "parallel-contrast",
   "url": "",
-  "tags": [],
+  "tags": [
+    "Editorial",
+    "Motion Design" 
+  ],
   "image": "assets/parallel-contrast/parallel-contrast_1.jpg",
   "gallery": [
     { "src": "assets/parallel-contrast/parallel-contrast_2.jpg", "caption": "", "layout": "full" },
