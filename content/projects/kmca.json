@@ -6,44 +6,44 @@
     "Identity",
     "Motion Design"
   ],
-  "image": "assets/kemper-museu-logo-animation-rebrand.gif",
+  "image": "assets/kmca/kmca_001.gif",
   "gallery": [
     {
-      "src": "assets/kemper-1.png",
+      "src": "assets/kmca/kmca_002.png",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/kemper-6.png",
+      "src": "assets/kmca/kmca_003.png",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/kemper-8.png",
+      "src": "assets/kmca/kmca_004.png",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/kemper-3.png",
+      "src": "assets/kmca/kmca_005.png",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/kemper-9.png",
+      "src": "assets/kmca/kmca_006.png",
       "caption": "Caption placeholder — final or closing view.",
       "layout": "full"
     },
     {
       "layout": "full",
-      "src": "assets/kemper.png"
+      "src": "assets/kmca/kmca_007.png"
     },
     {
       "layout": "full",
-      "src": "assets/kemper-2.png"
+      "src": "assets/kmca/kmca_008.png"
     },
     {
       "layout": "full",
-      "src": "assets/kemper.png"
+      "src": "assets/kmca/kmca_007.png"
     }
   ]
 }

@@ -5,32 +5,17 @@
   "tags": [
     "Typeface Design"
   ],
-  "image": "assets/2.jpg",
+  "image": "assets/chaplin/chaplin_9.png",
   "gallery": [
-    {
-      "src": "assets/spread.png",
-      "caption": "Caption placeholder — describe the opening view.",
-      "layout": "overlay"
-    },
-    {
-      "src": "assets/spread.png",
-      "caption": "Caption placeholder — detail or process shot.",
-      "layout": "beside-right"
-    },
-    {
-      "src": "assets/spread.png",
-      "caption": "Caption placeholder — interaction or state.",
-      "layout": "full"
-    },
-    {
-      "src": "assets/spread.png",
-      "caption": "Caption placeholder — material or texture.",
-      "layout": "beside-left"
-    },
-    {
-      "src": "assets/spread.png",
-      "caption": "Caption placeholder — final or closing view.",
-      "layout": "offset"
-    }
+    { "src": "assets/chaplin/chaplin_2.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/chaplin/chaplin_3.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/chaplin/chaplin_4.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/chaplin/chaplin_5.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/chaplin/chaplin_6.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/chaplin/chaplin_7.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/chaplin/chaplin_8.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/chaplin/chaplin_9.png", "caption": "", "layout": "full" },
+    { "src": "assets/chaplin/chaplin_10.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/chaplin/chaplin_11.jpg", "caption": "", "layout": "full" }
   ]
 }

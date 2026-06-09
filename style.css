@@ -794,6 +794,12 @@ h1:hover, #course:hover{
         }
     }
 
+    /* layout: double — two images side by side, description in third column */
+    .win-gallery-item.layout-double {
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: start;
+    }
+
     /* layout: overlay — image full width, caption overlaid at bottom */
     .win-gallery-item.layout-overlay {
         position: relative;
@@ -815,7 +821,8 @@ h1:hover, #course:hover{
     @media(width < 700px) {
         .win-gallery-item.layout-beside-right,
         .win-gallery-item.layout-beside-left,
-        .win-gallery-item.layout-offset {
+        .win-gallery-item.layout-offset,
+        .win-gallery-item.layout-double {
             grid-template-columns: 1fr;
 
             img, .win-caption { order: unset; }

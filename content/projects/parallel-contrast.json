@@ -1,0 +1,16 @@
+{
+  "title": "Parallel Contrast",
+  "id": "parallel-contrast",
+  "url": "",
+  "tags": [],
+  "image": "assets/parallel-contrast/parallel-contrast_1.jpg",
+  "gallery": [
+    { "src": "assets/parallel-contrast/parallel-contrast_2.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast_3.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast_4.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast_6.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast_7.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast_8.gif", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast_9.gif", "caption": "", "layout": "full" }
+  ]
+}

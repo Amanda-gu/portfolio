@@ -89,9 +89,10 @@ let zTop = 100
 
 function galleryHTML(gallery) {
     if (!gallery || !gallery.length) return ''
-    return gallery.slice(0, 10).map(item => `
+    return gallery.map(item => `
         <div class="win-gallery-item layout-${item.layout || 'full'}">
             <img src="${item.src}" alt="${item.caption || ''}">
+            ${item.src2 ? `<img src="${item.src2}" alt="">` : ''}
             ${item.caption ? `<p class="win-caption">${item.caption}</p>` : ''}
         </div>
     `).join('')

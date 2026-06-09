@@ -6,32 +6,14 @@
     "Web Design",
     "Web Development"
   ],
-  "image": "assets/links.png",
+  "image": "assets/how-do-we-see-the-world/how-do-we-see-the-world_5.gif",
   "gallery": [
-    {
-      "src": "assets/links.png",
-      "caption": "Opening screen — a question posed to the viewer before anything loads.",
-      "layout": "full"
-    },
-    {
-      "src": "assets/links.png",
-      "caption": "Navigation built entirely from hyperlinks, each pointing somewhere unexpected.",
-      "layout": "beside-right"
-    },
-    {
-      "src": "assets/links.png",
-      "caption": "Typography responds to scroll position, collapsing as the reader moves through.",
-      "layout": "beside-left"
-    },
-    {
-      "src": "assets/links.png",
-      "caption": "Color palette shifts between sections, anchored by a fixed monochrome grid.",
-      "layout": "offset"
-    },
-    {
-      "src": "assets/links.png",
-      "caption": "Final spread — the links loop back to the beginning.",
-      "layout": "overlay"
-    }
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_1.gif", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_2.png", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_3.gif", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_4.gif", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_5.gif", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_6.gif", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_7.gif", "caption": "", "layout": "full" }
   ]
 }

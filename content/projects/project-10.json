@@ -6,34 +6,34 @@
     "campaign",
     "web design"
   ],
-  "image": "assets/ucla-extension-billboard.jpg",
+  "image": "assets/ucla-extension/ucla-extension_001.jpg",
   "gallery": [
     {
-      "src": "assets/uclax-design-system-campaign.png",
+      "src": "assets/ucla-extension/ucla-extension_002.png",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/ucla-extension-social-instagram.gif",
+      "src": "assets/ucla-extension/ucla-extension_003.gif",
       "caption": "",
       "layout": "full"
     },
     {
       "layout": "full",
-      "src": "assets/ucla-extension-social-instagram.jpg"
+      "src": "assets/ucla-extension/ucla-extension_004.jpg"
     },
     {
-      "src": "assets/ucla_x_logo_motion-studies_3.gif",
+      "src": "assets/ucla-extension/ucla-extension_005.gif",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/uclax-design-system-4.png",
+      "src": "assets/ucla-extension/ucla-extension_006.png",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/uclax-design-system-6.png",
+      "src": "assets/ucla-extension/ucla-extension_007.png",
       "caption": "",
       "layout": "full"
     }
