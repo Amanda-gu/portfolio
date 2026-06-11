@@ -6,27 +6,15 @@
     "Event Graphics",
     "Identity"
   ],
-  "image": "assets/artiver-ai-art-awards/artiver-ai-art-awards_001.png",
+  "image": "assets/artiver-ai-art-awards/artiver-ai-art-awards-2.png",
   "gallery": [
-    {
-      "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards_002.png",
-      "caption": "",
-      "layout": "full"
-    },
-    {
-      "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards_003.png",
-      "caption": "",
-      "layout": "full"
-    },
-    {
-      "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards_004.png",
-      "caption": "",
-      "layout": "full"
-    },
-    {
-      "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards_005.png",
-      "caption": "",
-      "layout": "full"
-    }
+    { "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards-1.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards-3.png", "caption": "", "layout": "full" },
+    { "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards-4.png", "caption": "", "layout": "full" },
+    { "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards-5.png", "caption": "", "layout": "full" },
+    { "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards-6.png", "caption": "", "layout": "full" },
+    { "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards-7.png", "caption": "", "layout": "full" },
+    { "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards-8.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/artiver-ai-art-awards/artiver-ai-art-awards-9.mp4", "caption": "", "layout": "full" }
   ]
 }

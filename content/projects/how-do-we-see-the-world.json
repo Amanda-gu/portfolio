@@ -6,14 +6,14 @@
     "Web Design",
     "Web Development"
   ],
-  "image": "assets/how-do-we-see-the-world/how-do-we-see-the-world_5.gif",
+  "image": "assets/how-do-we-see-the-world/how-do-we-see-the-world_cover.gif",
   "gallery": [
-    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_1.gif", "caption": "", "layout": "full" },
-    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_2.png", "caption": "", "layout": "full" },
-    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_3.gif", "caption": "", "layout": "full" },
-    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_4.gif", "caption": "", "layout": "full" },
-    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_5.gif", "caption": "", "layout": "full" },
-    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_6.gif", "caption": "", "layout": "full" },
-    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world_7.gif", "caption": "", "layout": "full" }
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world-1.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world-2.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world-3.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world-4.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world-5.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world-6.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/how-do-we-see-the-world/how-do-we-see-the-world-7.mp4", "caption": "", "layout": "full" }
   ]
 }
