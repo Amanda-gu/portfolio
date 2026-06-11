@@ -81,6 +81,7 @@ window.addEventListener('pointermove', (e) => {
     }
 }, { passive: true })
 
+
 let projectsData = []
 
 // multiple windows
@@ -209,10 +210,11 @@ document.addEventListener('keydown', e => {
     const mainEl    = document.getElementById('main-content')
     const container = mainEl ? mainEl.parentElement : document.body
 
-    const maskCircles = RINGS.map((cfg, i) => {
-        const c = document.getElementById(`ink-mc-${i + 1}`)
-        if (c) c.setAttribute('r', cfg.r)
-        return c
+    const maskGroups = RINGS.map((cfg, i) => {
+        const g = document.getElementById(`ink-g-${i + 1}`)
+        const e = document.getElementById(`ink-mc-${i + 1}`)
+        if (e) { e.setAttribute('rx', cfg.r); e.setAttribute('ry', cfg.r) }
+        return g
     })
 
     const rings = RINGS.map((cfg, i) => {
@@ -259,10 +261,9 @@ document.addEventListener('keydown', e => {
         }
     }
 
-    function updateMasks(x, y) {
-        for (const c of maskCircles) {
-            if (c) { c.setAttribute('cx', x); c.setAttribute('cy', y) }
-        }
+    function setMaskTransform(x, y, sx, sy, angle) {
+        const t = `translate(${x},${y}) rotate(${angle}) scale(${sx},${sy})`
+        for (const g of maskGroups) { if (g) g.setAttribute('transform', t) }
     }
 
     buildClones()
@@ -275,13 +276,32 @@ document.addEventListener('keydown', e => {
     }
 
     let inkEnabled = true
+    let mouseX = -9999, mouseY = -9999
+    let inkX = -9999, inkY = -9999
+    let lastAngle = 0
+    const INK_LERP = 0.1
+
+    ;(function inkTick() {
+        const prevX = inkX, prevY = inkY
+        inkX += (mouseX - inkX) * INK_LERP
+        inkY += (mouseY - inkY) * INK_LERP
+
+        const vx = inkX - prevX, vy = inkY - prevY
+        const speed = Math.hypot(vx, vy)
+        if (speed > 0.3) lastAngle = Math.atan2(vy, vx) * 180 / Math.PI
+        const sx = 1 + speed * 0.04
+        const sy = Math.max(0.45, 1 / sx)
+
+        if (inkEnabled) setMaskTransform(inkX, inkY, sx, sy, lastAngle)
+        requestAnimationFrame(inkTick)
+    })()
 
     window.addEventListener('pointermove', e => {
-        if (inkEnabled) updateMasks(e.clientX, e.clientY)
+        mouseX = e.clientX; mouseY = e.clientY
     }, { passive: true })
 
     window.addEventListener('touchmove', e => {
-        if (inkEnabled) updateMasks(e.touches[0].clientX, e.touches[0].clientY)
+        mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY
     }, { passive: true })
 
     window.addEventListener('scroll', updateClonePositions, { passive: true })
@@ -296,7 +316,7 @@ document.addEventListener('keydown', e => {
     inkBtn.addEventListener('click', () => {
         inkEnabled = !inkEnabled
         inkBtn.textContent = inkEnabled ? 'disable ink' : 'enable ink'
-        if (!inkEnabled) updateMasks(-9999, -9999)
+        if (!inkEnabled) setMaskTransform(-9999, -9999, 1, 1, 0)
     })
 })()
 

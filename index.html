@@ -22,34 +22,34 @@
 		<svg id="ink-filters" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 			<defs>
 				<filter id="ink-liquid-edge" x="-60%" y="-60%" width="220%" height="220%">
-					<feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="8" result="noise"/>
-					<feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
-					<feGaussianBlur stdDeviation="6" in="displaced"/>
+					<feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="20" seed="8" result="noise"/>
+					<feDisplacementMap in="SourceGraphic" in2="noise" scale="120" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+					<feGaussianBlur stdDeviation="2" in="displaced"/>
 				</filter>
-				<mask id="ink-mask-1" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><circle id="ink-mc-1" cx="-9999" cy="-9999" r="1" fill="white" filter="url(#ink-liquid-edge)"/></mask>
-				<mask id="ink-mask-2" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><circle id="ink-mc-2" cx="-9999" cy="-9999" r="1" fill="white" filter="url(#ink-liquid-edge)"/></mask>
-				<mask id="ink-mask-3" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><circle id="ink-mc-3" cx="-9999" cy="-9999" r="1" fill="white" filter="url(#ink-liquid-edge)"/></mask>
-				<mask id="ink-mask-4" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><circle id="ink-mc-4" cx="-9999" cy="-9999" r="1" fill="white" filter="url(#ink-liquid-edge)"/></mask>
-				<mask id="ink-mask-5" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><circle id="ink-mc-5" cx="-9999" cy="-9999" r="1" fill="white" filter="url(#ink-liquid-edge)"/></mask>
+				<mask id="ink-mask-1" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><g id="ink-g-1" transform="translate(-9999,-9999)"><ellipse id="ink-mc-1" cx="0" cy="0" rx="1" ry="1" fill="white" filter="url(#ink-liquid-edge)"/></g></mask>
+				<mask id="ink-mask-2" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><g id="ink-g-2" transform="translate(-9999,-9999)"><ellipse id="ink-mc-2" cx="0" cy="0" rx="1" ry="1" fill="white" filter="url(#ink-liquid-edge)"/></g></mask>
+				<mask id="ink-mask-3" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><g id="ink-g-3" transform="translate(-9999,-9999)"><ellipse id="ink-mc-3" cx="0" cy="0" rx="1" ry="1" fill="white" filter="url(#ink-liquid-edge)"/></g></mask>
+				<mask id="ink-mask-4" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><g id="ink-g-4" transform="translate(-9999,-9999)"><ellipse id="ink-mc-4" cx="0" cy="0" rx="1" ry="1" fill="white" filter="url(#ink-liquid-edge)"/></g></mask>
+				<mask id="ink-mask-5" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999"><g id="ink-g-5" transform="translate(-9999,-9999)"><ellipse id="ink-mc-5" cx="0" cy="0" rx="1" ry="1" fill="white" filter="url(#ink-liquid-edge)"/></g></mask>
 				<filter id="ink-1" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
 					<feMorphology operator="dilate" radius="0.1" in="SourceGraphic" result="m"/>
 					<feGaussianBlur stdDeviation="0.1" in="m"/>
 				</filter>
 				<filter id="ink-2" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
-					<feMorphology operator="dilate" radius="0.35" in="SourceGraphic" result="m"/>
+					<feMorphology operator="dilate" radius="0.4" in="SourceGraphic" result="m"/>
 					<feGaussianBlur stdDeviation="0.2" in="m"/>
 				</filter>
 				<filter id="ink-3" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
 					<feMorphology operator="dilate" radius="0.8" in="SourceGraphic" result="m"/>
-					<feGaussianBlur stdDeviation="0.35" in="m"/>
+					<feGaussianBlur stdDeviation="0.3" in="m"/>
 				</filter>
 				<filter id="ink-4" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
 					<feMorphology operator="dilate" radius="1.2" in="SourceGraphic" result="m"/>
-					<feGaussianBlur stdDeviation="0.5" in="m"/>
+					<feGaussianBlur stdDeviation="0.4" in="m"/>
 				</filter>
 				<filter id="ink-5" color-interpolation-filters="sRGB" x="-30%" y="-30%" width="160%" height="160%">
-					<feMorphology operator="dilate" radius="1.9" in="SourceGraphic" result="m"/>
-					<feGaussianBlur stdDeviation="0.7" in="m"/>
+					<feMorphology operator="dilate" radius="1.6" in="SourceGraphic" result="m"/>
+					<feGaussianBlur stdDeviation="0.5" in="m"/>
 				</filter>
 			</defs>
 		</svg>
