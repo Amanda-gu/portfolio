@@ -193,124 +193,110 @@ document.addEventListener('keydown', e => {
     }
 })
 
-// ink bleed — per-character cursor proximity effect
+// ink bleed — ring-based cursor proximity effect
 ;(function () {
 
-    const MAX_DIST = 50   // px — outer edge, no effect
-    const INNER_DIST = 10 // px — full bleed
-    const LEVELS = 5
-    const FILTERS = ['', 'url(#ink-1)', 'url(#ink-2)', 'url(#ink-3)', 'url(#ink-4)', 'url(#ink-5)']
+    // Outer radius and fade-start for each level (1=outermost, 5=innermost)
+    const RINGS = [
+        { r: 303, fade: 48, filter: 'url(#ink-1)' },
+        { r: 90, fade: 38, filter: 'url(#ink-2)' },
+        { r: 48, fade: 28, filter: 'url(#ink-3)' },
+        { r: 25, fade: 18, filter: 'url(#ink-4)' },
+        { r: 13, fade:  8, filter: 'url(#ink-5)' },
+    ]
 
-    let mouseX = -9999, mouseY = -9999
-    let chars = []
-    let rafId = null
+    // Create one full-viewport overlay div per level
+    const mainEl    = document.getElementById('main-content')
+    const container = mainEl ? mainEl.parentElement : document.body
 
-    // split text nodes into .ink-char spans, preserving element structure
-    function splitNode(node) {
-        if (node.nodeType === Node.TEXT_NODE) {
-            const frag = document.createDocumentFragment()
-            for (const ch of node.textContent) {
-                if (ch === ' ' || ch === '\n' || ch === '\r' || ch === '\t') {
-                    frag.appendChild(document.createTextNode(ch))
-                } else {
-                    const span = document.createElement('span')
-                    span.className = 'ink-char'
-                    span.textContent = ch
-                    frag.appendChild(span)
-                }
-            }
-            node.replaceWith(frag)
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-            ;[...node.childNodes].forEach(splitNode)
+    const maskCircles = RINGS.map((cfg, i) => {
+        const c = document.getElementById(`ink-mc-${i + 1}`)
+        if (c) c.setAttribute('r', cfg.r)
+        return c
+    })
+
+    const rings = RINGS.map((cfg, i) => {
+        const div = document.createElement('div')
+        div.className = 'ink-ring'
+        div.style.filter = cfg.filter
+        div.style.zIndex = i + 1
+        div.style.webkitMask = `url(#ink-mask-${i + 1})`
+        div.style.mask       = `url(#ink-mask-${i + 1})`
+        container.appendChild(div)
+        return { div, ...cfg, clone: null }
+    })
+
+    function buildClones() {
+        if (!mainEl) return
+        const rect = mainEl.getBoundingClientRect()
+
+        for (const ring of rings) {
+            if (ring.clone) ring.clone.remove()
+            const clone = mainEl.cloneNode(true)
+            // Keep root id so `main #main-content` CSS rules apply to the clone
+            clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'))
+            clone.setAttribute('aria-hidden', 'true')
+            // Only show paragraphs — hide links and last-updated timestamp
+            clone.querySelectorAll('a, time').forEach(el => el.style.visibility = 'hidden')
+            Object.assign(clone.style, {
+                position  : 'absolute',
+                top       : '0',
+                left      : '0',
+                transform : `translate(${rect.left}px, ${rect.top}px)`,
+                width     : rect.width + 'px',
+                margin    : '0',
+            })
+            ring.clone = clone
+            ring.div.appendChild(clone)
         }
     }
 
-    // run after DOM is ready (projects load via fetch, main-content is static)
-    splitNode(document.getElementById('main-content'))
-    chars = [...document.querySelectorAll('#main-content .ink-char')]
-
-    // Store positions as document coords so scroll is handled cheaply in tick.
-    // Re-cache after fonts.ready because Macaulay shifts metrics vs the fallback.
-    function cacheRects() {
-        const sx = window.scrollX, sy = window.scrollY
-        for (const span of chars) {
-            const r = span.getBoundingClientRect()
-            span._docX = r.left + sx + r.width  * 0.5
-            span._docY = r.top  + sy + r.height * 0.5
+    function updateClonePositions() {
+        if (!mainEl) return
+        const rect = mainEl.getBoundingClientRect()
+        for (const ring of rings) {
+            if (ring.clone) ring.clone.style.transform = `translate(${rect.left}px, ${rect.top}px)`
         }
     }
-    cacheRects()
-    document.fonts.ready.then(cacheRects)
-    let _resizeTimer
-    window.addEventListener('resize', () => {
-        clearTimeout(_resizeTimer)
-        _resizeTimer = setTimeout(cacheRects, 100)
-    }, { passive: true })
 
-    const RISE = 0.01  // how fast ink builds up per frame (~1s to full)
+    function updateMasks(x, y) {
+        for (const c of maskCircles) {
+            if (c) { c.setAttribute('cx', x); c.setAttribute('cy', y) }
+        }
+    }
+
+    buildClones()
+    document.fonts.ready.then(buildClones)
+
+    // Rebuild when projects are injected
+    const projectList = document.getElementById('project')
+    if (projectList) {
+        new MutationObserver(buildClones).observe(projectList, { childList: true })
+    }
 
     let inkEnabled = true
 
-    function clearInk() {
-        for (const span of chars) {
-            span._inkVal = 0
-            span._inkLevel = 0
-            span.style.filter = ''
-        }
-    }
-
-    function tick() {
-        let anyRising = false
-
-        const sx = window.scrollX, sy = window.scrollY
-        for (const span of chars) {
-            const cx = span._docX - sx
-            const cy = span._docY - sy
-            const dist = Math.hypot(cx - mouseX, cy - mouseY)
-
-            let target = 0
-            if (dist < MAX_DIST) {
-                const norm = 1 - Math.max(0, (dist - INNER_DIST) / (MAX_DIST - INNER_DIST))
-                target = norm * norm * LEVELS
-            }
-
-            const val = span._inkVal || 0
-            const next = target > val ? val + (target - val) * RISE : val
-            span._inkVal = next
-
-            const level = Math.min(LEVELS, Math.ceil(next))
-            if (span._inkLevel !== level) {
-                span.style.filter = FILTERS[level]
-                span._inkLevel = level
-            }
-
-            if (target > val + 0.001) anyRising = true
-        }
-
-        rafId = anyRising ? requestAnimationFrame(tick) : null
-    }
-
-    function scheduleTick() {
-        if (!rafId) rafId = requestAnimationFrame(tick)
-    }
-
     window.addEventListener('pointermove', e => {
-        mouseX = e.clientX
-        mouseY = e.clientY
-        if (inkEnabled) scheduleTick()
-    })
+        if (inkEnabled) updateMasks(e.clientX, e.clientY)
+    }, { passive: true })
 
     window.addEventListener('touchmove', e => {
-        mouseX = e.touches[0].clientX
-        mouseY = e.touches[0].clientY
-        if (inkEnabled) scheduleTick()
+        if (inkEnabled) updateMasks(e.touches[0].clientX, e.touches[0].clientY)
+    }, { passive: true })
+
+    window.addEventListener('scroll', updateClonePositions, { passive: true })
+
+    let _resizeTimer
+    window.addEventListener('resize', () => {
+        clearTimeout(_resizeTimer)
+        _resizeTimer = setTimeout(buildClones, 100)
     }, { passive: true })
 
     const inkBtn = document.getElementById('ink-clear')
     inkBtn.addEventListener('click', () => {
         inkEnabled = !inkEnabled
         inkBtn.textContent = inkEnabled ? 'disable ink' : 'enable ink'
-        if (!inkEnabled) clearInk()
+        if (!inkEnabled) updateMasks(-9999, -9999)
     })
 })()
 
