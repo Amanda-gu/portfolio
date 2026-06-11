@@ -210,12 +210,7 @@ document.addEventListener('keydown', e => {
     const mainEl    = document.getElementById('main-content')
     const container = mainEl ? mainEl.parentElement : document.body
 
-    const maskGroups = RINGS.map((cfg, i) => {
-        const g = document.getElementById(`ink-g-${i + 1}`)
-        const e = document.getElementById(`ink-mc-${i + 1}`)
-        if (e) { e.setAttribute('rx', cfg.r); e.setAttribute('ry', cfg.r) }
-        return g
-    })
+    const stampContainers = RINGS.map((_, i) => document.getElementById(`ink-stamps-${i + 1}`))
 
     const rings = RINGS.map((cfg, i) => {
         const div = document.createElement('div')
@@ -261,49 +256,52 @@ document.addEventListener('keydown', e => {
         }
     }
 
-    function setMaskTransform(x, y, sx, sy, angle) {
-        const t = `translate(${x},${y}) rotate(${angle}) scale(${sx},${sy})`
-        for (const g of maskGroups) { if (g) g.setAttribute('transform', t) }
+    const MIN_DIST   = 18   // px between stamps
+    const MAX_STAMPS = 35   // max stamps before oldest is removed
+
+    // Apply soft-edge filter once per container (not per stamp)
+    for (const c of stampContainers) {
+        if (c) c.setAttribute('filter', 'url(#ink-stamp-soft)')
+    }
+
+    let lastSX = -9999, lastSY = -9999
+    let inkEnabled = true
+
+    function addStamp(x, y) {
+        if (!inkEnabled) return
+        if (Math.hypot(x - lastSX, y - lastSY) < MIN_DIST) return
+        lastSX = x; lastSY = y
+
+        for (let i = 0; i < stampContainers.length; i++) {
+            const container = stampContainers[i]
+            if (!container) continue
+            const ns = 'http://www.w3.org/2000/svg'
+            const g = document.createElementNS(ns, 'g')
+            g.setAttribute('transform', `translate(${x},${y})`)
+            const e = document.createElementNS(ns, 'ellipse')
+            e.setAttribute('cx', '0'); e.setAttribute('cy', '0')
+            e.setAttribute('rx', RINGS[i].r); e.setAttribute('ry', RINGS[i].r)
+            e.setAttribute('fill', 'white')
+            g.appendChild(e)
+            container.appendChild(g)
+            if (container.children.length > MAX_STAMPS) container.removeChild(container.firstChild)
+        }
+    }
+
+    function clearStamps() {
+        for (const c of stampContainers) { if (c) c.innerHTML = '' }
     }
 
     buildClones()
     document.fonts.ready.then(buildClones)
 
-    // Rebuild when projects are injected
     const projectList = document.getElementById('project')
     if (projectList) {
         new MutationObserver(buildClones).observe(projectList, { childList: true })
     }
 
-    let inkEnabled = true
-    let mouseX = -9999, mouseY = -9999
-    let inkX = -9999, inkY = -9999
-    let lastAngle = 0
-    const INK_LERP = 0.1
-
-    ;(function inkTick() {
-        const prevX = inkX, prevY = inkY
-        inkX += (mouseX - inkX) * INK_LERP
-        inkY += (mouseY - inkY) * INK_LERP
-
-        const vx = inkX - prevX, vy = inkY - prevY
-        const speed = Math.hypot(vx, vy)
-        if (speed > 0.3) lastAngle = Math.atan2(vy, vx) * 180 / Math.PI
-        const sx = 1 + speed * 0.04
-        const sy = Math.max(0.45, 1 / sx)
-
-        if (inkEnabled) setMaskTransform(inkX, inkY, sx, sy, lastAngle)
-        requestAnimationFrame(inkTick)
-    })()
-
-    window.addEventListener('pointermove', e => {
-        mouseX = e.clientX; mouseY = e.clientY
-    }, { passive: true })
-
-    window.addEventListener('touchmove', e => {
-        mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY
-    }, { passive: true })
-
+    window.addEventListener('pointermove', e => addStamp(e.clientX, e.clientY), { passive: true })
+    window.addEventListener('touchmove', e => addStamp(e.touches[0].clientX, e.touches[0].clientY), { passive: true })
     window.addEventListener('scroll', updateClonePositions, { passive: true })
 
     let _resizeTimer
@@ -316,7 +314,7 @@ document.addEventListener('keydown', e => {
     inkBtn.addEventListener('click', () => {
         inkEnabled = !inkEnabled
         inkBtn.textContent = inkEnabled ? 'disable ink' : 'enable ink'
-        if (!inkEnabled) setMaskTransform(-9999, -9999, 1, 1, 0)
+        if (!inkEnabled) clearStamps()
     })
 })()
 
