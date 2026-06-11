@@ -6,35 +6,75 @@
     "campaign",
     "web design"
   ],
-  "image": "assets/ucla-extension/ucla-extension_001.jpg",
+  "image": "assets/ucla-extension/ucla-x_1.png",
   "gallery": [
     {
-      "src": "assets/ucla-extension/ucla-extension_002.png",
-      "caption": "Caption placeholder — describe the opening view.",
-      "layout": "full"
-    },
-    {
-      "src": "assets/ucla-extension/ucla-extension_003.gif",
-      "caption": "Caption placeholder — detail or process shot.",
-      "layout": "full"
-    },
-    {
-      "src": "assets/ucla-extension/ucla-extension_005.gif",
+      "src": "assets/ucla-extension/ucla-x_2.jpg",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/ucla-extension/ucla-extension_006.png",
+      "src": "assets/ucla-extension/ucla-x_3.png",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/ucla-extension/ucla-extension_007.png",
+      "src": "assets/ucla-extension/ucla-x_4.gif",
       "caption": "",
       "layout": "full"
     },
     {
-      "src": "assets/ucla-extension/ucla-extension_008.jpg",
+      "src": "assets/ucla-extension/ucla-x_5.jpg",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_6.gif",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_7.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_8.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_9.jpg",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_10.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_11.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_12.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_13.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_14.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/ucla-extension/ucla-x_15.png",
       "caption": "",
       "layout": "full"
     }

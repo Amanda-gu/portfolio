@@ -748,7 +748,7 @@ h1:hover, #course:hover{
         display: grid;
         gap: var(--space-bar-2);
 
-        img {
+        img, video {
             width: 100%;
             border-radius: var(--button-corner);
             display: block;
@@ -772,7 +772,7 @@ h1:hover, #course:hover{
         align-items: start;
 
         .win-caption { order: 0; }
-        img { order: 1; }
+        img, video { order: 1; }
     }
 
     /* layout: beside-left — image left, caption right */
@@ -780,7 +780,7 @@ h1:hover, #course:hover{
         grid-template-columns: 1.4fr 1fr;
         align-items: start;
 
-        img { order: 0; }
+        img, video { order: 0; }
         .win-caption { order: 1; }
     }
 
@@ -793,7 +793,7 @@ h1:hover, #course:hover{
             order: 0;
             padding-block-start: var(--space-bar-1);
         }
-        img {
+        img, video {
             order: 1;
         }
     }
@@ -809,7 +809,7 @@ h1:hover, #course:hover{
         position: relative;
         display: block;
 
-        img { width: 100%; }
+        img, video { width: 100%; }
 
         .win-caption {
             position: absolute;
@@ -829,7 +829,7 @@ h1:hover, #course:hover{
         .win-gallery-item.layout-double {
             grid-template-columns: 1fr;
 
-            img, .win-caption { order: unset; }
+            img, video, .win-caption { order: unset; }
         }
     }
 }

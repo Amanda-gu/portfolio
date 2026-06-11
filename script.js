@@ -90,13 +90,23 @@ let zTop = 100
 
 function galleryHTML(gallery) {
     if (!gallery || !gallery.length) return ''
-    return gallery.map(item => `
+    return gallery.map(item => {
+        const isVideo = item.src.endsWith('.mp4')
+        const media = isVideo
+            ? `<video src="${item.src}" loop muted playsinline autoplay></video>`
+            : `<img src="${item.src}" alt="${item.caption || ''}">`
+        const media2 = item.src2
+            ? (item.src2.endsWith('.mp4')
+                ? `<video src="${item.src2}" loop muted playsinline autoplay></video>`
+                : `<img src="${item.src2}" alt="">`)
+            : ''
+        return `
         <div class="win-gallery-item layout-${item.layout || 'full'}">
-            <img src="${item.src}" alt="${item.caption || ''}">
-            ${item.src2 ? `<img src="${item.src2}" alt="">` : ''}
+            ${media}
+            ${media2}
             ${item.caption ? `<p class="win-caption">${item.caption}</p>` : ''}
-        </div>
-    `).join('')
+        </div>`
+    }).join('')
 }
 
 function createWindow(project) {

@@ -6,14 +6,15 @@
     "Interaction Design",
     "Web Design"
   ],
-  "image": "assets/esi/esi_1.gif",
+  "image": "assets/esi/esi-7.png",
   "gallery": [
-    { "src": "assets/esi/esi_2.gif", "caption": "", "layout": "full" },
-    { "src": "assets/esi/esi_3.png", "caption": "", "layout": "full" },
-    { "src": "assets/esi/esi_4.png", "caption": "", "layout": "full" },
-    { "src": "assets/esi/esi_5.gif", "caption": "", "layout": "full" },
-    { "src": "assets/esi/esi_6.png", "caption": "", "layout": "full" },
-    { "src": "assets/esi/esi_7.gif", "caption": "", "layout": "full" },
-    { "src": "assets/esi/esi_9.gif", "caption": "", "layout": "full" }
+    { "src": "assets/esi/esi-1.png", "caption": "", "layout": "full" },
+    { "src": "assets/esi/esi-2.png", "caption": "", "layout": "full" },
+    { "src": "assets/esi/esi-3.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/esi/esi-4.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/esi/esi-5.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/esi/esi-6.png", "caption": "", "layout": "full" },
+    { "src": "assets/esi/esi-8.png", "caption": "", "layout": "full" },
+    { "src": "assets/esi/esi-9.mp4", "caption": "", "layout": "full" }
   ]
 }

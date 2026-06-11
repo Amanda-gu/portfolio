@@ -1,0 +1,97 @@
+{
+  "title": "Revive",
+  "id": "revive",
+  "url": "",
+  "tags": [
+    "identity",
+    "web design"
+  ],
+  "image": "assets/revive/revive-brand-2.png",
+  "gallery": [
+    {
+      "src": "assets/revive/revive-brand-1.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-brand-3.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-brand-4.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-brand-5.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-brand-6.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-brand-7.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-brand-8.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-brand-9.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-brand-10.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-web-1.mp4",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-web-2.mp4",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-web-2.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-web-3.mp4",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-web-3.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-web-4.mp4",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-web-4.png",
+      "caption": "",
+      "layout": "full"
+    },
+    {
+      "src": "assets/revive/revive-web-8.png",
+      "caption": "",
+      "layout": "full"
+    }
+  ]
+}
