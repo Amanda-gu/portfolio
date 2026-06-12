@@ -8,13 +8,14 @@
   ],
   "image": "assets/esi/esi-7.png",
   "gallery": [
-    { "src": "assets/esi/esi-1.png", "caption": "", "layout": "full" },
-    { "src": "assets/esi/esi-2.png", "caption": "", "layout": "full" },
     { "src": "assets/esi/esi-3.mp4", "caption": "", "layout": "full" },
     { "src": "assets/esi/esi-4.mp4", "caption": "", "layout": "full" },
     { "src": "assets/esi/esi-5.mp4", "caption": "", "layout": "full" },
-    { "src": "assets/esi/esi-6.png", "caption": "", "layout": "full" },
+   
     { "src": "assets/esi/esi-8.png", "caption": "", "layout": "full" },
-    { "src": "assets/esi/esi-9.mp4", "caption": "", "layout": "full" }
+    { "src": "assets/esi/esi-9.mp4", "caption": "", "layout": "full" },   
+    { "src": "assets/esi/esi-6.png", "caption": "", "layout": "full" },
+    { "src": "assets/esi/esi-2.png", "caption": "", "layout": "full" },
+    { "src": "assets/esi/esi-1.png", "caption": "", "layout": "full" }
   ]
 }
