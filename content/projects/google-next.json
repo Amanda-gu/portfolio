@@ -1,0 +1,16 @@
+{
+  "title": "Google Next",
+  "id": "google-next",
+  "url": "",
+  "tags": [
+    "Motion Design"
+  ],
+  "image": "assets/google-next/google-next-cover.gif",
+  "gallery": [
+    { "src": "assets/google-next/08_Basketball graphics.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/google-next/17_Veo Prompt.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/google-next/Veo.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/google-next/dial an app.mp4", "caption": "", "layout": "full" },
+    { "src": "assets/google-next/dial more ease.mp4", "caption": "", "layout": "full" }
+  ]
+}
