@@ -358,6 +358,58 @@ document.addEventListener('keydown', e => {
     }
 })()
 
+// desktop zoom via IntersectionObserver
+;(function () {
+    if (window.matchMedia('(pointer: coarse)').matches) return
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            entry.target.classList.toggle('in-view', entry.isIntersecting)
+        })
+    }, {  rootMargin: '-5% 0px 0% 0px', threshold: 0 })
+
+    function observe(root) {
+        root.querySelectorAll('#main-content p, .card').forEach(el => io.observe(el))
+    }
+
+    observe(document)
+
+    new MutationObserver(mutations => {
+        mutations.forEach(m => m.addedNodes.forEach(node => {
+            if (node.nodeType !== 1) return
+            if (node.matches('.card')) io.observe(node)
+            else observe(node)
+        }))
+    }).observe(document.body, { childList: true, subtree: true })
+})()
+
+// mobile blur via IntersectionObserver
+;(function () {
+    if (!window.matchMedia('(pointer: coarse)').matches) return
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            entry.target.classList.toggle('in-view', entry.isIntersecting)
+        })
+    }, { rootMargin: '-15% 0px -35% 0px', threshold: 0 })
+
+    function observe(root) {
+        root.querySelectorAll('.card, .win-link, #main-content p').forEach(el => io.observe(el))
+        root.querySelectorAll('.text-links').forEach(el => {
+            if (!el.closest('.card')) io.observe(el)
+        })
+    }
+
+    observe(document)
+
+    new MutationObserver(mutations => {
+        mutations.forEach(m => m.addedNodes.forEach(node => {
+            if (node.nodeType !== 1) return
+            if (node.matches('.card, .win-link')) io.observe(node)
+            else if (node.matches('.text-links') && !node.closest('.card')) io.observe(node)
+            else observe(node)
+        }))
+    }).observe(document.body, { childList: true, subtree: true })
+})()
+
 // render projects from JSON
 fetch('content/projects.json')
     .then(r => r.json())
