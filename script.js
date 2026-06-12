@@ -275,10 +275,8 @@ document.addEventListener('keydown', e => {
     }
 
     let lastSX = -9999, lastSY = -9999
-    let inkEnabled = true
 
     function addStamp(x, y) {
-        if (!inkEnabled) return
         if (Math.hypot(x - lastSX, y - lastSY) < MIN_DIST) return
         lastSX = x; lastSY = y
 
@@ -310,8 +308,6 @@ document.addEventListener('keydown', e => {
         new MutationObserver(buildClones).observe(projectList, { childList: true })
     }
 
-    window.addEventListener('pointermove', e => addStamp(e.clientX, e.clientY), { passive: true })
-    window.addEventListener('touchmove', e => addStamp(e.touches[0].clientX, e.touches[0].clientY), { passive: true })
     window.addEventListener('scroll', updateClonePositions, { passive: true })
 
     let _resizeTimer
@@ -320,12 +316,46 @@ document.addEventListener('keydown', e => {
         _resizeTimer = setTimeout(buildClones, 100)
     }, { passive: true })
 
-    const inkBtn = document.getElementById('ink-clear')
-    inkBtn.addEventListener('click', () => {
-        inkEnabled = !inkEnabled
-        inkBtn.textContent = inkEnabled ? 'disable ink' : 'enable ink'
-        if (!inkEnabled) clearStamps()
-    })
+    if (window.matchMedia('(pointer: coarse)').matches) {
+        // Mobile: one drifting stamp per ring level, Lissajous path
+        const ns = 'http://www.w3.org/2000/svg'
+        const driftStamps = stampContainers.map((c, i) => {
+            if (!c) return null
+            const g = document.createElementNS(ns, 'g')
+            const e = document.createElementNS(ns, 'ellipse')
+            e.setAttribute('cx', '0'); e.setAttribute('cy', '0')
+            e.setAttribute('rx', RINGS[i].r); e.setAttribute('ry', RINGS[i].r)
+            e.setAttribute('fill', 'white')
+            g.appendChild(e)
+            c.appendChild(g)
+            return g
+        })
+        let t = 0
+        ;(function tick() {
+            t += 0.008
+            const cx = window.innerWidth  * (0.5 + 0.3  * Math.sin(t))
+            const cy = window.innerHeight * (0.45 + 0.22 * Math.cos(t * 0.7))
+            driftStamps.forEach(g => { if (g) g.setAttribute('transform', `translate(${cx},${cy})`) })
+            requestAnimationFrame(tick)
+        })()
+    } else {
+        // Desktop: toggle button controls ink; off by default
+        let inkEnabled = false
+        const inkBtn = document.getElementById('ink-toggle')
+
+        function onPointerMove(e) {
+            if (inkEnabled) addStamp(e.clientX, e.clientY)
+        }
+        window.addEventListener('pointermove', onPointerMove, { passive: true })
+
+        if (inkBtn) {
+            inkBtn.addEventListener('click', () => {
+                inkEnabled = !inkEnabled
+                inkBtn.textContent = inkEnabled ? 'disable ink' : 'enable ink'
+                if (!inkEnabled) clearStamps()
+            })
+        }
+    }
 })()
 
 // render projects from JSON
@@ -349,7 +379,7 @@ fetch('content/projects.json')
                             ${p.tags.map(t => `<tag>${t}</tag>`).join('')}
                         </section>
                     </div>
-                    ${p.image ? `<img class="img-cursor" src="${p.image}" alt="${p.title}"><img class="img-static" src="${p.image}" alt="${p.title}">` : ''}
+                    ${p.image ? `<img class="img-cursor" src="${p.image}" alt="${p.title}"><div class="img-static"><img src="${p.image}" alt="${p.title}"></div>` : ''}
                 </div>
             </li>
         `).join('')
