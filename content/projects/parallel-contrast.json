@@ -6,13 +6,13 @@
     "Editorial",
     "Motion Design" 
   ],
-  "image": "assets/parallel-contrast/parallel-contrast_1.jpg",
+  "image": "assets/parallel-contrast/parallel-contrast-1.png",
   "gallery": [
-    { "src": "assets/parallel-contrast/parallel-contrast_2.jpg", "caption": "", "layout": "full" },
-    { "src": "assets/parallel-contrast/parallel-contrast_3.jpg", "caption": "", "layout": "full" },
-    { "src": "assets/parallel-contrast/parallel-contrast_4.jpg", "caption": "", "layout": "full" },
-    { "src": "assets/parallel-contrast/parallel-contrast_6.jpg", "caption": "", "layout": "full" },
-    { "src": "assets/parallel-contrast/parallel-contrast_7.jpg", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast-2.png", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast-3.png", "src2": "assets/parallel-contrast/parallel-contrast-4.png", "caption": "", "layout": "double" },
+    { "src": "assets/parallel-contrast/parallel-contrast-5.png", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast-6.png", "caption": "", "layout": "full" },
+    { "src": "assets/parallel-contrast/parallel-contrast-7.png", "caption": "", "layout": "full" },
     { "src": "assets/parallel-contrast/parallel-contrast_8.gif", "caption": "", "layout": "full" },
     { "src": "assets/parallel-contrast/parallel-contrast_9.gif", "caption": "", "layout": "full" }
   ]
